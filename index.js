@@ -9,6 +9,19 @@ function dupicate(string) {
   try {
     let tempArr = string.split('');
     console.log(tempArr);
+    var temp_json = {};
+    tempArr.forEach(function (letter, idx, arr) {
+      if (!temp_json.letter) {
+        temp_json.letter = 1;
+      } else {
+        let val = temp_json.letter;
+        // we can call also ++ either +1
+        temp_json.letter = val + 1;
+      }
+    });
+    for (let [key, value] of temp_json) {
+      console.log(key.toLowerCase() + ' ' + value);
+    }
   } catch (err) {
     console.log(err.message);
   }
@@ -23,15 +36,14 @@ function validatePalin(str) {
   for (let i = 0; i < len / 2; i++) {
     // validate the first and last characters are same
     if (string[i] !== string[len - 1 - i]) {
-      alert('It is not a palindrome');
+      console.log([string[i], string[len - 1 - i]]);
+      console.log('It is not a palindrome');
     }
   }
-  alert('It is a palindrome');
+  console.log('It is a palindrome');
 }
 
 // accept the string or number from the prompt
-const string = prompt('Enter a string or number: ');
-
-const value = validatePalin(string);
-
+const string = 'A lot not new I saw as I Went on to LA'; //prompt('Enter a string or number: ');
+//const value = validatePalin(string);
 console.log(value);
